@@ -61,4 +61,21 @@ class Transformacje:
         return(f,l,h)
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
