@@ -165,7 +165,7 @@ class Transformacje:
             
         return(x1992, y1992)
     
-    
+        
     
     
     
