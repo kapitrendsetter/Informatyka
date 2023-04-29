@@ -334,7 +334,7 @@ plik.close()
     
     
     
-    
+   # jp2 gmd
     
     
     
