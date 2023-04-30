@@ -1,4 +1,3 @@
-
 from math import *
 
 o = object()
@@ -27,9 +26,9 @@ class Transformation:
             self.b = 6356752.31414036
         else:
             raise NotImplementedError(f"{model} model not implemented")
-        self.flat = (self.a - self.b) / self.a        # splaszczenie
-        self.e = sqrt(2 * self.flat - self.flat ** 2) # mimosrod
-        self.e2 = (2 * self.flat - self.flat ** 2)    # mimosrod^2  
+        self.flat = (self.a - self.b) / self.a        
+        self.e = sqrt(2 * self.flat - self.flat ** 2) 
+        self.e2 = (2 * self.flat - self.flat ** 2)      
         
 
     def hirvonen(self,X,Y,Z):
@@ -185,7 +184,7 @@ class Transformation:
         e2 = self.e2
         fi = self.hirvonen(x, y, z)[0]
         l = self.hirvonen(x, y, z)[1]
-        #N = self.a / sqrt(1 - self.e2 * sin(f)**2)
+       
       
         N = -sin(fi) * cos(l) * x - sin(fi) * sin(l) * y + cos(fi) * z
         E = -sin(l) * x + cos(l) * y
@@ -195,8 +194,6 @@ class Transformation:
     
 
 
-    
-        
     
 X = []
 Y = []
@@ -211,6 +208,7 @@ Y_00 = []
 N = []
 E = []
 U = []
+
 
             
 with open('wsp_inp.txt', 'r') as plik:
