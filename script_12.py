@@ -34,16 +34,13 @@ class Transformation:
 
     def hirvonen(self,X,Y,Z):
         '''
-        
+        Zmiana współrzędnych geocentrycznych na współrzędne geodezyjne (Algorytm Hirvonena)
 
         Parameters
         ----------
-        X : TYPE
-            DESCRIPTION.
-        Y : TYPE
-            DESCRIPTION.
-        Z : TYPE
-            DESCRIPTION.
+        X : współrzędna geocentryczna [m]
+        Y : współrzędna geocentryczna [m]
+        Z : współrzędna geocentryczna [m]
 
         Returns
         -------
@@ -64,23 +61,19 @@ class Transformation:
     
     def x_y_2000(self, X, Y, Z):
         '''
-        
+        przeliczenie wszpolrzednych geodezyjnych 
+        na wspolrzedne ukladu 2000
 
         Parameters
         ----------
-        x : TYPE
-            DESCRIPTION.
-        y : TYPE
-            DESCRIPTION.
-        z : TYPE
-            DESCRIPTION.
+        x : współrzędna geocentryczna [m]
+        y : współrzędna geocentryczna [m]
+        z : współrzędna geocentryczna [m]
 
         Returns
         -------
-        x_00 : TYPE
-            DESCRIPTION.
-        y_00 : TYPE
-            DESCRIPTION.
+        x_00 : współrzędna geocentryczna w układzie PL - 2000
+        y_00 : współrzędna geocentryczna w układzie PL - 2000
 
         '''
         a = self.a
@@ -129,23 +122,16 @@ class Transformation:
             
         Parameters
         -------
-        x : float
-            wspolrzedna geocentryczna [m]
-        y : float
-            wspolrzedna geocentryczna [m]
-        z : float
-            wspolrzedna geocentryczna [m]
-        a : [float] 
-            dluzsza polos elipsoidy [m]
-        e2: [float] 
-            mimosrod elipsoidy [niemianowana]
+        x : wspolrzedna geocentryczna [m]
+        y : wspolrzedna geocentryczna [m]
+        z : wspolrzedna geocentryczna [m]
+        a : dluzsza polos elipsoidy [m]
+        e2: mimosrod elipsoidy [niemianowana]
             
         Returns
         -------
-        x92 : [float] 
-            wspolrzedna w ukladzie PL-1992 [m]
-        y92 : [float]  
-            wspolrzedna w ukladzie PL-1992 [m]  
+        x92 : wspolrzedna w ukladzie PL-1992 [m]
+        y92 : wspolrzedna w ukladzie PL-1992 [m]  
         
         """ 
         a = self.a
@@ -182,25 +168,17 @@ class Transformation:
     
         Parameters
         -------
-        x : float
-            wspolrzedna geocentryczna [m]
-        y : float
-            wspolrzedna geocentryczna [m]
-        z : float
-            wspolrzedna geocentryczna [m]
-        a : float 
-            dluzsza polos elipsoidy [m]
-        e2: float 
-            mimosrod elipsoidy [niemianowana]
+        x : wspolrzedna geocentryczna [m]
+        y : wspolrzedna geocentryczna [m]
+        z : wspolrzedna geocentryczna [m]
+        a : dluzsza polos elipsoidy [m]
+        e2: mimosrod elipsoidy [niemianowana]
       
         Returns
         -------
-        N : float 
-            wpolrzedna topocentryczna N (north) [m]
-        E : float 
-            wpolrzedna topocentryczna E (east) [m]
-        U : float 
-            wpolrzedna topocentryczna U (up) [m]
+        N : wpolrzedna topocentryczna N  [m]
+        E : wpolrzedna topocentryczna E  [m]
+        U : wpolrzedna topocentryczna U  [m]
     
         """ 
         a = self.a
@@ -288,12 +266,12 @@ if __name__ == "__main__":
 
 
 plik=open("wyniki.txt","w")
-plik.write(f'Współrzędne flh, PL_1992, PL_2000, NEU stacji permanentnej GNSS \n')
+plik.write(f'Współrzędne flh, PL_1992, PL_2000, NEU\n')
 plik.write(f'Obserwatorium Astronomiczno-Geodezyjne w Józefosławiu \n')
-plik.write(f'# ************************************* \n')
-plik.write(f'# fLh **********************************\n')
+plik.write(f'# --------------------------------------\n')
+plik.write(f'# fLh ----------------------------------\n')
 plik.write(f'  f[d]         l[d]         h[m] \n')
-plik.write(f'# ************************************* \n')
+plik.write(f'# ------------------------------------- \n')
 for A,B,C in zip(F,L,H):
     A = f'{A:7.4f}'
     B = f'{B:7.4f}'
@@ -301,28 +279,28 @@ for A,B,C in zip(F,L,H):
     plik.write(f'{A},      {B},      {C} \n')
     
   
-plik.write(f'# ************************************* \n')
-plik.write(f'# PL_2000 ************************************* \n')
+plik.write(f'# ------------------------------------- \n')
+plik.write(f'# PL_2000 -------------------------------------- \n')
 plik.write(f'  X[m]         Y[m] \n')
-plik.write(f'# ************************************* \n')
+plik.write(f'# ------------------------------------- \n')
 for A,B in zip(X_00,Y_00):
     A = f'{A:7.3f}'
     B = f'{B:7.3f}'
     plik.write(f'{A},   {B} \n')
     
-plik.write(f'# ************************************* \n')
-plik.write(f'# PL_1992 ************************************* \n')
+plik.write(f'# ------------------------------------- \n')
+plik.write(f'# PL_1992 -------------------------------------- \n')
 plik.write(f'  X[m]         Y[m] \n')
-plik.write(f'# ************************************* \n')
+plik.write(f'# ------------------------------------- \n')
 for A,B in zip(X_92,Y_92):
     A = f'{A:7.3f}'
     B = f'{B:7.3f}'
     plik.write(f'{A},   {B} \n')
 
-plik.write(f'# ************************************* \n')
-plik.write(f'# NEU ************************************* \n')
+plik.write(f'# ------------------------------------- \n')
+plik.write(f'# NEU ------------------------------------- \n')
 plik.write(f'  N[m]         E[m]         U[m] \n')
-plik.write(f'# ************************************* \n')
+plik.write(f'# ------------------------------------- \n')
 
 for A,B,C in zip(N,E,U):
     A = f'{A:7.3f}'
