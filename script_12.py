@@ -266,12 +266,12 @@ if __name__ == "__main__":
 
 
 plik=open("wyniki.txt","w")
-plik.write(f'Współrzędne flh, PL_1992, PL_2000, NEU\n')
+plik.write(f'Współrzędne flh, PL_1992, PL_2000, NEU stacji permanentnej GNSS \n')
 plik.write(f'Obserwatorium Astronomiczno-Geodezyjne w Józefosławiu \n')
-plik.write(f'# --------------------------------------\n')
-plik.write(f'# fLh ----------------------------------\n')
+plik.write(f'# ************************************* \n')
+plik.write(f'# fLh **********************************\n')
 plik.write(f'  f[d]         l[d]         h[m] \n')
-plik.write(f'# ------------------------------------- \n')
+plik.write(f'# ************************************* \n')
 for A,B,C in zip(F,L,H):
     A = f'{A:7.4f}'
     B = f'{B:7.4f}'
@@ -279,28 +279,28 @@ for A,B,C in zip(F,L,H):
     plik.write(f'{A},      {B},      {C} \n')
     
   
-plik.write(f'# ------------------------------------- \n')
-plik.write(f'# PL_2000 -------------------------------------- \n')
+plik.write(f'# ************************************* \n')
+plik.write(f'# PL_2000 ************************************* \n')
 plik.write(f'  X[m]         Y[m] \n')
-plik.write(f'# ------------------------------------- \n')
+plik.write(f'# ************************************* \n')
 for A,B in zip(X_00,Y_00):
     A = f'{A:7.3f}'
     B = f'{B:7.3f}'
     plik.write(f'{A},   {B} \n')
     
-plik.write(f'# ------------------------------------- \n')
-plik.write(f'# PL_1992 -------------------------------------- \n')
+plik.write(f'# ************************************* \n')
+plik.write(f'# PL_1992 ************************************* \n')
 plik.write(f'  X[m]         Y[m] \n')
-plik.write(f'# ------------------------------------- \n')
+plik.write(f'# ************************************* \n')
 for A,B in zip(X_92,Y_92):
     A = f'{A:7.3f}'
     B = f'{B:7.3f}'
     plik.write(f'{A},   {B} \n')
 
-plik.write(f'# ------------------------------------- \n')
-plik.write(f'# NEU ------------------------------------- \n')
+plik.write(f'# ************************************* \n')
+plik.write(f'# NEU ************************************* \n')
 plik.write(f'  N[m]         E[m]         U[m] \n')
-plik.write(f'# ------------------------------------- \n')
+plik.write(f'# ************************************* \n')
 
 for A,B,C in zip(N,E,U):
     A = f'{A:7.3f}'
