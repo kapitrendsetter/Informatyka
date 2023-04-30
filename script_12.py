@@ -231,21 +231,21 @@ if __name__ == "__main__":
     #tworze obiekt
     geo = Transformation(model = "wgs84")
     #wsp geocentryczne
-    x = 100; y = 120; z = 0
-    x2000,y2000 = geo.x_y_2000(x,y,z)
-    x1992,y1992 = geo.x_y_1992(x, y, z)
-    f1, l1, h = geo.hirvonen(x,y,z)
-   # N, E, U = geo.XYZ_neu(x, y, z )
-    f = f1 * 180 / pi
-    l = l1 * 180 / pi
-    print(x2000,y2000)
-    print('')
-    print(x1992,y1992)
-    print('')
-    print(f, l, h)
-    print('')
+#    x = 100; y = 120; z = 0
+#   x2000,y2000 = geo.x_y_2000(x,y,z)
+#    x1992,y1992 = geo.x_y_1992(x, y, z)
+#    f1, l1, h = geo.hirvonen(x,y,z)
+#   # N, E, U = geo.XYZ_neu(x, y, z )
+#    f = f1 * 180 / pi
+#    l = l1 * 180 / pi
+#    print(x2000,y2000)
+#    print('')
+#    print(x1992,y1992)
+#    print('')
+#    print(f, l, h)
+#    print('')
    #print(N, E, U)
-    print('')
+#    print('')
     for A,B,C in zip(X,Y,Z):
         f, l, h = geo.hirvonen(A, B, C)
         F.append(degrees(f))
