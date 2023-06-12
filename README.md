@@ -41,7 +41,7 @@ Należy otworzyć command window ( w folderze w którym znajduje się skrypt pro
 w otwrtym command window należy wpisac nazwę pliku proj2.py -m "nazwę modelu" -x 120 -y 200 -z 300 (nazwa modelu np. wgs84 lub grs80)
 Wartości i argumenty oddzielamy spacją. 
 Kolejnosć wyników: 1 - wsp. geo. 2 - Pl-2000 3 - PL-1992 4 - NEU (błedne wyniki)
-- Za pomocą komendy wyglądajcej następująco  (python script_12.py -g dane.txt -t wyniki.txt) można w oknie cmd wprowadzic nazwe pliku (np.dane.txt) z danymi w formacie .txt oraz dodać nazwę pliku(np. wyniki.txt) ktory bedzie zawierac  obliczone wartości w formacie .txt. przykładowy plik z danymi to wsp.inp.txt 
+- Za pomocą komendy wyglądajcej następująco  (python script_12.py -g dane.txt -t wyniki.txt) można w oknie cmd wprowadzic nazwe pliku (np.dane.txt) z danymi w formacie .txt oraz dodać nazwę pliku(np. wyniki.txt)->(plik utworzy sie w folderze w ktorym jest program) bedzie zawierac  obliczone wartości w formacie .txt. Przykładowy plik z danymi to wsp.inp.txt 
 
 # Znane błędy i nietypowe zachowania programu, które nie zostały jeszcze naprawione:
 - problemy z przeliczaniem współrzędnych xyz do NEU
