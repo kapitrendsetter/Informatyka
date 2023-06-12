@@ -34,14 +34,14 @@ Plik ze współrzędnymi należy mieć w danym folderze w którym znajduje się 
 Żeby program wywołał wyniki nazwę pliku należy wpisac do skryptu w miejsce open('nazwa_pliku.txt','r')
 Nastepnie pliku o nazwie wyniki.txt utworzy się w folderze w którym znajduję się skrypt 
 Kolejność wyników:wsp. 1- geodezyjne, 2- PL-2000, 3- Pl-1992, 4- NEU
+Plik wejściowy musi mieć zawsze nazwę "nazwa_pliku.txt" , aby użytkownik miał możliwość łatwej edycji nazwy pliku.
 
-- Wykorzystanie biblioteki argparse
+- Wykorzystanie biblioteki argparse w celu przeliczenia współrzędnych w wybranym odwzorowaniu:
 Najpierw należy otworzyć command window ( w folderze w którym znajduje się skrypt programu należy zmienić scieżkę tego folderu na cmd), 
-w otwrtym command window należy wpisac nazwę pliku proj2.py -m"nazwę modelu" -x 120 -y 200 -z 300 (nazwa modelu np. WGS84 lub GRS80)
+w otwrtym command window należy wpisac nazwę pliku proj2.py -m"nazwę modelu" -x 120 -y 200 -z 300 (nazwa modelu np. wgs84 lub grs80)
 Wartości i argumenty oddzielamy spacją 
-Kolejnosć wyników: 1 - wsp. geo. 2 - Pl-2000 3 - PL-1992 4 - NEU
+Kolejnosć wyników: 1 - wsp. geo. 2 - Pl-2000 3 - PL-1992 4 - NEU (błedne wyniki)
+- Za pomocą komendy wyglądajcej następująco (python script_12.py -t nazwa_pliku_jakiegoś.txt) można w oknie cmd wprowadzić plik z obliczonymi wartościami w formacie txt(przykładowy plik2.txt)
 
-
-    
 # Znane błędy i nietypowe zachowania programu, które nie zostały jeszcze naprawione:
 - problemy z przeliczaniem współrzędnych xyz do NEU
