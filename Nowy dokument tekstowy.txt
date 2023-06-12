@@ -1,0 +1,8 @@
+python script_12.py -t gowno.txt
+
+
+C:\Users\Lenevo\Desktop\infomatyka>python proj2.py -m wgs84 -x 1 -y 1 -z 1
+-0.00134 45.0 -6378135.5858
+-159.006 10892008.67
+-5300165.099 3497420.034
+1.0 0.0 1.414

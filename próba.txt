@@ -1,0 +1,240 @@
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka
+$ git clone https://github.com/kapitrendsetter/Informatyka.git .
+Cloning into '.'...
+remote: Enumerating objects: 12, done.
+remote: Counting objects: 100% (12/12), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 12 (delta 0), reused 9 (delta 0), pack-reused 0
+Receiving objects: 100% (12/12), done.
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   script_12-14.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git add script_12-14.py
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   script_12-14.py
+
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git commit -m "dodałem jedną linijkę od siebie"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'Lenevo@DESKTOP-NBFU7R3.(none)')
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$  git config --global user.email "mateusz2001.pl@wp.pl"
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git config --global user.name "mateuszjan377"
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git commit -m "dodałem jedną linijkę od siebie"
+[master b6b76ef] dodałem jedną linijkę od siebie
+ 1 file changed, 1 insertion(+)
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git log
+commit b6b76efb35e2e7a4436250ebb546fe6651c32e0c (HEAD -> master)
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Mon Apr 24 18:11:37 2023 +0200
+
+    dodałem jedną linijkę od siebie
+
+commit d6c51f0e5a2fd8a6f9b440804ac2f7ed9187cc21 (origin/master, origin/HEAD)
+Author: mateuszjan377 <130387993+mateuszjan377@users.noreply.github.com>
+Date:   Mon Apr 24 14:44:41 2023 +0200
+
+    dodałem koty
+
+commit 3b8227e750e4971c3671cfd08646ab1c83185603
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Mon Apr 3 15:00:23 2023 +0200
+
+    pieski napisane
+
+commit 2495594ac230d4313b0df946d73805c41e103899
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Mon Mar 27 15:29:35 2023 +0200
+
+    dodanie hello world
+
+commit a15e64fd40268cd79d090864b768ef859f61dc4d
+Author: Kacper Kędra <kacperkedra@MacBook-Air-Kacper.local>
+Date:   Mon Mar 27 15:13:30 2023 +0200
+
+    utworzenie pliku
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 308 bytes | 154.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/kapitrendsetter/Informatyka.git
+   d6c51f0..b6b76ef  master -> master
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git add
+Nothing specified, nothing added.
+hint: Maybe you wanted to say 'git add .'?
+hint: Turn this message off by running
+hint: "git config advice.addEmptyPathspec false"
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git add script_12-14.py
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git commit
+Aborting commit due to empty commit message.
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git commit -m " dodałem linijkę "
+[master 34e0028]  dodałem linijkę
+ 1 file changed, 2 insertions(+)
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git push
+To https://github.com/kapitrendsetter/Informatyka.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/kapitrendsetter/Informatyka.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git pull
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 6 (delta 0), reused 6 (delta 0), pack-reused 0
+Unpacking objects: 100% (6/6), 515 bytes | 9.00 KiB/s, done.
+From https://github.com/kapitrendsetter/Informatyka
+   b6b76ef..38414a6  master     -> origin/master
+Auto-merging script_12-14.py
+CONFLICT (content): Merge conflict in script_12-14.py
+Automatic merge failed; fix conflicts and then commit the result.
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master|MERGING)
+$ git status
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 1 and 2 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   script_12-14.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master|MERGING)
+$ git add script_12-14.py
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master|MERGING)
+$ git commit -m " rozwiązanie konfliktu"
+[master e7f6ee5]  rozwiązanie konfliktu
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git log
+commit e7f6ee51c1defd48a455b2e92326515d5471539f (HEAD -> master)
+Merge: 34e0028 38414a6
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Mon Apr 24 18:34:10 2023 +0200
+
+     rozwiązanie konfliktu
+
+commit 34e0028c865cdf78d201150b4fbd4f2ecce5c23b
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Mon Apr 24 18:28:13 2023 +0200
+
+     dodałem linijkę
+
+commit 38414a600c6aff0425fc1418f54cb4ebc40f08bd (origin/master, origin/HEAD)
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Mon Apr 24 18:25:10 2023 +0200
+
+    napisalem zolwie
+
+commit 3246aceef724c6d8d1afc8a58e25ea950635bce3
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Mon Apr 24 18:22:16 2023 +0200
+
+    usunalem zdanie kolegi
+
+commit b6b76efb35e2e7a4436250ebb546fe6651c32e0c
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Mon Apr 24 18:11:37 2023 +0200
+
+    dodałem jedną linijkę od siebie
+
+commit d6c51f0e5a2fd8a6f9b440804ac2f7ed9187cc21
+Author: mateuszjan377 <130387993+mateuszjan377@users.noreply.github.com>
+Date:   Mon Apr 24 14:44:41 2023 +0200
+
+    dodałem koty
+
+commit 3b8227e750e4971c3671cfd08646ab1c83185603
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Mon Apr 3 15:00:23 2023 +0200
+
+    pieski napisane
+
+commit 2495594ac230d4313b0df946d73805c41e103899
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Mon Mar 27 15:29:35 2023 +0200
+
+    dodanie hello world
+
+commit a15e64fd40268cd79d090864b768ef859f61dc4d
+Author: Kacper Kędra <kacperkedra@MacBook-Air-Kacper.local>
+Date:   Mon Mar 27 15:13:30 2023 +0200
+
+    utworzenie pliku
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$ git push
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (6/6), 593 bytes | 197.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/kapitrendsetter/Informatyka.git
+   38414a6..e7f6ee5  master -> master
+
+Lenevo@DESKTOP-NBFU7R3 MINGW64 ~/Desktop/infomatyka (master)
+$

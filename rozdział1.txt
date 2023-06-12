@@ -1,0 +1,14 @@
+\section{Wstęp}
+\subsection{Cel projektu}
+Tworzenie pliku implementującego transformacje:
+\\- przejście ze współrzędnych XYZ do fi, lamda, h (algorytm hirvonena)
+\\- przejście ze współrzędnych XYZ do współrzędnych w układzie PL-2000
+\\- przejście ze współrzędnych XYZ do współrzędnych w układzie PL-1992
+\\- przejście ze współrzędnych XYZ do współrzędnych w układzie NEU
+\subsection{Wykorzystane narzędzia i materiały}
+W trakcie replikacji ćwiczenia skorzystaliśmy z następujących narzędzi i materiałów:
+\\- Python jako główny język programowania
+\\- Środowisko Spyder do tworzenia, testowania i debugowania skryptów
+\\- System operacyjny Windows 10/ macOS 
+\\- System kontroli wersji Git do zarządzania kodem źródłowym
+\\- Edytor LaTeX do tworzenia dokumentów

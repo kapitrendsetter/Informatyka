@@ -1,0 +1,122 @@
+[33mcommit 20d566d5baed1cae528938bf66d106be3ba6ea12[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Merge: 0732dc3 d22b32a
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Sat Apr 29 17:56:41 2023 +0200
+
+    Merge branch 'master' of https://github.com/kapitrendsetter/Informatyka
+
+[33mcommit 0732dc3c0335f44c44360ff851cd6d3275833ca2[m
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Sat Apr 29 17:54:54 2023 +0200
+
+    1223
+
+[33mcommit d22b32a67d7b0be8fc80f5e13a8b7d22306f7220[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Sat Apr 29 17:46:42 2023 +0200
+
+    wersja testowa kodu ~ spotkanie u kacpra2
+
+[33mcommit 5437fec4a37662d2ee28adaa20fca6345d2025fa[m
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Sat Apr 29 17:40:47 2023 +0200
+
+    wersja testowa kodu ~ spotkanie u kacpra
+
+[33mcommit 1add9e9131d68cd911d4a052b313e6bb43ecd243[m
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Sat Apr 29 14:47:10 2023 +0200
+
+    dodalismy dwie defincję 2000/1992
+
+[33mcommit 76c4821da59bcb98bcdc08b7771b8d30e15261ac[m
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Sat Apr 29 14:03:13 2023 +0200
+
+    dodałem hirvonena
+
+[33mcommit 6f85d44636f1e52b739ff7c066a3533baa3e651f[m
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Sat Apr 29 14:02:46 2023 +0200
+
+    dodałem hirvonena
+
+[33mcommit 85cc4e1a88f45524d7f9090562954e518b955f51[m
+Merge: 881e06b d1afa99
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Sat Apr 29 13:55:54 2023 +0200
+
+    dodałem hirvonena
+
+[33mcommit 881e06b3db52e14ebf4e21285e9de9ea855881c8[m
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Sat Apr 29 13:21:59 2023 +0200
+
+    dodałem hirvonena
+
+[33mcommit d1afa99aef527b8991df6f1209c5173e01927ade[m
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Tue Apr 25 23:14:19 2023 +0200
+
+    poczatki kodu
+
+[33mcommit 58512e13278583912c05f19239795698db3d8072[m
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Tue Apr 25 21:53:37 2023 +0200
+
+    usunalem wszystko zaczynamy projekt
+
+[33mcommit e7f6ee51c1defd48a455b2e92326515d5471539f[m
+Merge: 34e0028 38414a6
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Mon Apr 24 18:34:10 2023 +0200
+
+     rozwiązanie konfliktu
+
+[33mcommit 34e0028c865cdf78d201150b4fbd4f2ecce5c23b[m
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Mon Apr 24 18:28:13 2023 +0200
+
+     dodałem linijkę
+
+[33mcommit 38414a600c6aff0425fc1418f54cb4ebc40f08bd[m
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Mon Apr 24 18:25:10 2023 +0200
+
+    napisalem zolwie
+
+[33mcommit 3246aceef724c6d8d1afc8a58e25ea950635bce3[m
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Mon Apr 24 18:22:16 2023 +0200
+
+    usunalem zdanie kolegi
+
+[33mcommit b6b76efb35e2e7a4436250ebb546fe6651c32e0c[m
+Author: mateuszjan377 <mateusz2001.pl@wp.pl>
+Date:   Mon Apr 24 18:11:37 2023 +0200
+
+    dodałem jedną linijkę od siebie
+
+[33mcommit d6c51f0e5a2fd8a6f9b440804ac2f7ed9187cc21[m
+Author: mateuszjan377 <130387993+mateuszjan377@users.noreply.github.com>
+Date:   Mon Apr 24 14:44:41 2023 +0200
+
+    dodałem koty
+
+[33mcommit 3b8227e750e4971c3671cfd08646ab1c83185603[m
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Mon Apr 3 15:00:23 2023 +0200
+
+    pieski napisane
+
+[33mcommit 2495594ac230d4313b0df946d73805c41e103899[m
+Author: Kacper <kedrakacper56@gmail.com>
+Date:   Mon Mar 27 15:29:35 2023 +0200
+
+    dodanie hello world
+
+[33mcommit a15e64fd40268cd79d090864b768ef859f61dc4d[m
+Author: Kacper Kędra <kacperkedra@MacBook-Air-Kacper.local>
+Date:   Mon Mar 27 15:13:30 2023 +0200
+
+    utworzenie pliku
