@@ -161,40 +161,209 @@ class Transformation:
             
         return(x1992, y1992)
 
-    def XYZ_neu(self, x, y, z):
-        """   
-        Funkcja przelicza wspolrzedne geodezyjne  
-        na wspolrzedne topograficzne.
-    
-        Parameters
-        -------
-        x : wspolrzedna geocentryczna [m]
-        y : wspolrzedna geocentryczna [m]
-        z : wspolrzedna geocentryczna [m]
-        a : dluzsza polos elipsoidy [m]
-        e2: mimosrod elipsoidy [niemianowana]
-      
+    def flh2XYZ(self, f, l, h):
+        """
+        Odwrotny algorytm Hirvonena - algorytm transformacji współrzędnych geodezyjnych 
+        długość szerokość i wysokośc elipsoidalna(fi, lambda, h) na współrzędne ortokartezjańskie  (X, Y, Z).
+
+        Parametery
+        ----------
+        f, l, h : FLOAT
+            [dec_degree] współrzędne geodezyjne, 
+
         Returns
         -------
-        N : wpolrzedna topocentryczna N  [m]
-        E : wpolrzedna topocentryczna E  [m]
-        U : wpolrzedna topocentryczna U  [m]
+        X, Y, Z : FLOAT
+            [metry] współrzędne ortokartezjańskie
+        """
+        f = radians(f)
+        l = radians(l)
+        N = self.a / sqrt(1 - self.e2 * sin(f)**2)
+        X = (N + h) * cos(f) * cos(l)
+        Y = (N + h) * cos(f) * sin(l)
+        Z = (N * (1 - self.e2) + h) * sin(f)
+        return X, Y, Z
     
-        """ 
+    def XYZ_neu(self, xa, ya, za, xb, yb, zb):
+        """
+        Transformacja XYZ -> NEU - algorytm transformacji współrzędnych wektora pomiędzy dwoma punktami w układzie współrzędnych 
+        ortokartezjańskich (X, Y, Z) na współrzędne wektora pomiędzy dwoma punktami w układzie NEU: North, East, Up (N, E, U). 
+        Wykorzystujemy bibliotekę numpy.
+
+        Parametery
+        ----------
+        Xa, Ya, Za : FLOAT
+            [metry] współrzędne w układzie orto-kartezjańskim, 
+        
+        Xb, Yb, Zb : FLOAT
+            [metry] współrzędne punktu referencyjnego w układzie orto-kartezjańskim, 
+
+        Returns
+        -------
+        N, E, U : FLOAT
+            [metry] współrzędne w układzie NEU
+        """
+        
         a = self.a
         e2 = self.e2
-        fi = self.hirvonen(x, y, z)[0]
-        l = self.hirvonen(x, y, z)[1]
-       
-      
-        N = -sin(fi) * cos(l) * x - sin(fi) * sin(l) * y + cos(fi) * z
-        E = -sin(l) * x + cos(l) * y
-        U = cos(fi) * cos(l) * x + cos(fi) * sin(l) * y  + sin(fi) * z
-        return (N, E, U)    
+        dxyz = np.array([xb, yb, zb]) - np.array([xa, ya, za])
+        f = self.hirvonen(xa, ya, za)[0]
+        l = self.hirvonen(xa, ya, za)[1]
+        R = self.Rneu(f, l)
+        dneu = -np.linalg.solve(R, dxyz)
+        N = dneu[0]
+        E = dneu[1]
+        U = dneu[2]
+
+        return N, E, U
 
     
 
 
+    def file_open(self, name):
+        """
+        Wczytanie pliku .txt i wyodrębnienie podanych w nim współrzędnych 
+        za pomocą pętli for. Odczytane dane dodajemy do list.
+        """
+        
+        X = []
+        Y = []
+        Z = []
+        with open(name, 'r') as plik:
+            lines = plik.readlines()
+            t = 0
+            for i in lines:
+                x = i.split(',')
+                X.append(float(x[0]))
+                Y.append(float(x[1]))
+                Z.append(float(x[2]))
+            
+        return X, Y, Z
+
+    def file_save92(self, X, Y, Z, file_out):
+        """
+        Funkcja ta pozwala zapisać współrzędne otrzymane po transformacji XYZ -> PL-1992 
+        do pliku wyjsciowego file_out w formacie .txt
+        """
+        
+        X92 = []
+        Y92 = []
+        for a, b, c in zip(X, Y, Z):
+            x92, y92 = geo.x_y_1992(a, b, c)
+            X92.append(x92)
+            Y92.append(y92)
+            
+        plik=open(file_out,"w")
+        plik.write(f'# PL-1992---------------------------------------------- \n')
+        plik.write(f'  X[m]         Y[m] \n')
+        plik.write(f'# ----------------------------------------------------- \n')
+        for a,b in zip(X92,Y92):
+            a = f'{a:7.3f}'
+            b = f'{b:7.3f}'
+            plik.write(f'{a},   {b} \n')
+        plik.close()
+            
+    def file_save00(self, X, Y, Z, file_out):
+        """
+        Funkcja ta pozwala zapisać współrzędne otrzymane po transformacji XYZ -> PL-2000 
+        do pliku wyjsciowego file_out w formacie .txt
+        """
+        
+        X00 = []
+        Y00 = []
+        for a, b, c in zip(X, Y, Z):
+            x00, y00 = geo.x_y_2000(a, b, c)
+            X00.append(x00)
+            Y00.append(y00)
+            
+        plik=open(file_out,"w")
+        plik.write(f'# PL-2000---------------------------------------------- \n')
+        plik.write(f'  X[m]         Y[m] \n')
+        plik.write(f'# ----------------------------------------------------- \n')
+        for a,b in zip(X00,Y00):
+            a = f'{a:7.3f}'
+            b = f'{b:7.3f}'
+            plik.write(f'{a},   {b} \n')
+        plik.close()
+
+            
+    def file_saveFLH(self, X, Y, Z, file_out):
+        """
+        Funkcja ta pozwala zapisać współrzędne otrzymane po transformacji XYZ -> BLH 
+        do pliku wyjsciowego file_out w formacie .txt
+        """
+        
+        F = []
+        L = []
+        H = []
+        for a, b, c in zip(X, Y, Z):
+            f, l, h = geo.hirvonen(a, b, c)
+            F.append(degrees(f))
+            L.append(degrees(l))
+            H.append(h)
+            
+        plik=open(file_out,"w")
+        plik.write(f'  B[d]         L[d]         H[m] \n')
+        plik.write(f'# ----------------------------------------------------- \n')
+        for a,b,c in zip(F,L,H):
+            a = f'{a:7.4f}'
+            b = f'{b:7.4f}'
+            c = f'{c:7.3f}'
+            plik.write(f'{a},      {b},      {c} \n')
+        plik.close()
+            
+    def file_saveNEU(self, X, Y, Z, xref, yref, zref, file_out):
+        """
+        Funkcja ta pozwala zapisać współrzędne otrzymane po transformacji XYZ -> NEU 
+        do pliku wyjsciowego file_out w formacie .txt
+        """
+        
+        N = []
+        E = []
+        U = []
+        for a, b, c in zip(X, Y, Z):
+            n, e, u = geo.XYZ_neu(a, b, c, xref, yref, zref)
+            N.append(n)
+            E.append(e)
+            U.append(u)
+
+        plik=open(file_out,"w")
+        plik.write(f'  N[m]         E[m]         U[m] \n')
+        plik.write(f'# ----------------------------------------------------- \n')
+
+        for a,b,c in zip(N,E,U):
+            a = f'{a:7.3f}'
+            b = f'{b:7.3f}'
+            c = f'{c:7.3f}'
+            plik.write(f'{a},   {b},      {c} \n')
+        plik.close()
+        
+    def file_saveXYZ(self, B, L, H, file_out):
+        """
+        Funkcja ta pozwala zapisać współrzędne otrzymane po transformacji BLH -> XYZ 
+        do pliku wyjsciowego file_out w formacie .txt
+        """
+        
+        X = []
+        Y = []
+        Z = []
+        for a, b, c in zip(B, L, H):
+            x, y, z = geo.flh2XYZ(a, b, c)
+            X.append(x)
+            Y.append(y)
+            Z.append(z)
+            
+        plik=open(file_out,"w")
+        plik.write(f'  X[m]         Y[m]         Z[m] \n')
+        plik.write(f'# ----------------------------------------------------- \n')
+        for a,b,c in zip(X,Y,Z):
+            a = f'{a:7.3f}'
+            b = f'{b:7.3f}'
+            c = f'{c:7.3f}'
+            plik.write(f'{a},      {b},      {c} \n')
+        plik.close()
+
+'''
     
 X = []
 Y = []
@@ -224,14 +393,40 @@ with open('wsp_inp.txt', 'r') as plik:
             Z.append(float(x[2]))
             
             #print(X)
-        
+   '''     
         
 if __name__ == "__main__":
     #tworze obiekt
-    geo = Transformation(model = "wgs84")
-    parser = ArgumentParser()
-    parser.add_argument('-t', '--t', type=str, help="Podaj nazwe pliku tekstowegoz danymi z rozszerzeniem txt")
+    #geo = Transformation(model = "wgs84")
+    
+    parser = ArgumentParser() 
+    parser.add_argument('--dane', type = str, choices = ['XYZ', 'BLH'], default = 'XYZ', help = 'Typ wprowadzanych współrzędnych (BLH lub XYZ), domyslnie: XYZ' )
+    parser.add_argument('-x_ref', type = float, help = 'Współrzędna X punktu referencyjnego', default = 100.00)
+    parser.add_argument('-y_ref', type = float, help = 'Współrzędna Y punktu referencyjnego', default = 100.00)
+    parser.add_argument('-z_ref', type = float, help = 'Współrzędna Z punktu referencyjnego', default = 100.00)
+    parser.add_argument('--model', type = str, choices = ['wgs84', 'grs80', 'krasowski'], default = 'wgs84', help = 'Model elipsoidy (wgs84, grs80 lub krasowski), domyslnie: wgs84')
+    parser.add_argument('--uklad', type = str, choices = ['PL-1992', 'PL-2000', 'BLH', 'NEU'], default = 'BLH', help= 'System współrzędnych (PL-1992, PL-2000, BLH, NEU), domyslnie: BLH')
+    parser.add_argument('-txt', type = str, help = 'Nazwa pliku wejsciowego z rozszerzeniem .txt, zawierającego współrzędne do transformacji')
+    parser.add_argument('-txt_out', type = str, help = 'Nazwa pliku wyjsciowego z rozszerzeniem .txt zawierającego przetransformowane współrzędne')
     args = parser.parse_args()
+    geo = Transformation(model = args.model)
+    if args.dane == 'XYZ':
+            if args.uklad == 'PL-1992':
+                X, Y, Z = geo.file_open(args.txt)
+                geo.file_save92(X, Y, Z, args.txt_out)
+            elif args.uklad == 'PL-2000':
+                X, Y, Z = geo.file_open(args.txt)
+                geo.file_save00(X, Y, Z, args.txt_out)
+            elif args.uklad == 'BLH':
+                X, Y, Z = geo.file_open(args.txt)
+                geo.file_saveFLH(X, Y, Z, args.txt_out)
+            elif args.uklad == 'NEU':
+                X, Y, Z = geo.file_open(args.txt)
+                geo.file_saveNEU(X, Y, Z, args.x_ref, args.y_ref, args.z_ref, args.txt_out)
+    elif args.dane == 'BLH':
+            B, L, H = geo.file_open(args.txt)
+            geo.file_saveXYZ(B, L, H, args.txt_out)
+            
     #wsp geocentryczne
 #    x = 100; y = 120; z = 0
 #   x2000,y2000 = geo.x_y_2000(x,y,z)
@@ -248,6 +443,27 @@ if __name__ == "__main__":
 #    print('')
    #print(N, E, U)
 #    print('')
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    '''
     X = []
     Y = []
     Z = []
@@ -292,6 +508,8 @@ if __name__ == "__main__":
         E.append(e)
         U.append(u)
     
+
+
 
 
 
@@ -341,7 +559,7 @@ if __name__ == "__main__":
      
 
 
-
+'''
 
 
 
