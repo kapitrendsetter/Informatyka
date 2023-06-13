@@ -1,3 +1,4 @@
+import numpy as np
 from math import *
 from argparse import ArgumentParser
 
@@ -183,6 +184,27 @@ class Transformation:
         Y = (N + h) * cos(f) * sin(l)
         Z = (N * (1 - self.e2) + h) * sin(f)
         return X, Y, Z
+    
+    def Rneu(self, f, l):
+        """
+        Macierz R w transformacji współrzędnych XYZ na NEU jest macierzą rotacji, która pozwala przeliczyć 
+        współrzędne z układu kartezjańskiego na współrzędne związanego z Ziemią układu współrzędnych geodezyjnych NEU.
+        Wykorzystujemy bibliotekę numpy.
+        
+        Parametery
+        ----------
+        fi, lam: FLOAT
+            [dec_degree] współrzędne fi, lambda w układzie geodezyjnym, 
+       
+        Returns
+        -------
+        R : array
+            [niemianowane] macierz rotacji
+        """
+        R = np.array([[-np.sin(f) * np.cos(l), -np.sin(l), np.cos(f) * np.cos(l)],
+                      [-np.sin(f) * np.sin(l), np.cos(l), np.cos(f) * np.sin(l)],
+                      [np.cos(f), 0, np.sin(f)]])
+        return(R)
     
     def XYZ_neu(self, xa, ya, za, xb, yb, zb):
         """
